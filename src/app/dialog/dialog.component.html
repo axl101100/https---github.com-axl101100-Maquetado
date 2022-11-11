@@ -1,0 +1,70 @@
+<h1 mat-dialog-title>Alta cliente</h1>
+<div mat-dialog-content>
+  <form [formGroup]="productForm">
+    <mat-form-field appearance="outline">
+      <mat-label> Nombre</mat-label>
+      <input formControlName="productName" matInput placeholder="name" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> serie</mat-label>
+      <input formControlName="serie" matInput placeholder="serie" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Numero</mat-label>
+      <input formControlName="numero" matInput type="number" placeholder="numero"/>
+  </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> ruc</mat-label>
+      <input formControlName="ruc" matInput placeholder="ruc" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> mtc</mat-label>
+      <input formControlName="mtc" matInput placeholder="mtc" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> totalOnerosa</mat-label>
+      <input formControlName="totalOnerosa" matInput placeholder="totalOnerosa" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> totalGratuita</mat-label>
+      <input formControlName="totalGratuita" matInput placeholder="totalGratuita" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> enviadoCliente</mat-label>
+      <input formControlName="enviadoCliente" matInput placeholder="enviadoCliente" />
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+      <mat-label> Tipos</mat-label>
+      <mat-select formControlName="category" placeholder="Categoria">
+        <mat-option value="Indefinido">Indefinido</mat-option>
+        <mat-option value="Activo">Activo</mat-option>
+        <mat-option value="Inactivo">Inactivo</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Choose a date</mat-label>
+      <input formControlName="date" matInput [matDatepicker]="picker" />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+  </form>
+</div>
+
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button color="warn" mat-dialog-close>close</button>
+  <button
+    style="margin-left: 8px"
+    mat-raised-button color="primary" (click)="addProduct()">{{ actionBtn }}</button>
+</div>

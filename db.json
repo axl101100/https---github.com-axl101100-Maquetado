@@ -1,0 +1,53 @@
+{
+  "productList": [
+    {
+      "productName": "Cliente",
+      "serie": "A2487",
+      "numero": 3,
+      "ruc": "78541",
+      "mtc": "-",
+      "totalOnerosa": "11.50",
+      "totalGratuita": "20.00",
+      "enviadoCliente": "NO",
+      "category": "Activo",
+      "date": "2022-11-01T05:00:00.000Z",
+      "id": 2
+    },
+    {
+      "productName": "Cliente 1",
+      "serie": "B1254",
+      "numero": 1,
+      "ruc": "75418",
+      "mtc": "-",
+      "totalOnerosa": "11.50",
+      "totalGratuita": "50.00",
+      "enviadoCliente": "NO",
+      "category": "Activo",
+      "date": "2022-11-01T05:00:00.000Z",
+      "id": 3
+    },
+    {
+      "productName": "Cliente 4",
+      "serie": "A123",
+      "numero": 3,
+      "ruc": "64523",
+      "mtc": "-",
+      "totalOnerosa": "11",
+      "totalGratuita": "33",
+      "enviadoCliente": "SI",
+      "category": "Inactivo",
+      "date": "2022-11-01T05:00:00.000Z",
+      "id": 4
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

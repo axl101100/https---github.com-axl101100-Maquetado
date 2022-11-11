@@ -1,0 +1,212 @@
+
+<mat-toolbar color="primary">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>supervised_user_circle</mat-icon>
+  </button>
+  <span>COMPROBANTES</span>
+  <span class="example-spacer"></span>
+  <button mat-raised-button color="warn" (click)="openDialog()">Agregar</button>
+</mat-toolbar>
+
+
+
+<div class="example-container">
+<mat-form-field appearance="outline">
+  <mat-label> Filtrar por tipo</mat-label>
+  <mat-select (selectionChange)="onChange($event)"  formControlName="" placeholder="">
+    <mat-option *ngFor="let row of " [value]="dataSource" >indefinido</mat-option>
+    <mat-option value="Activo">Activo</mat-option>
+    <mat-option value="Inactivo">Inactivo</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+  <mat-label> Filtrar por entidad/serie</mat-label>
+  <mat-select   formControlName="" placeholder="">
+    <mat-option value="1" >1</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+  <mat-label> Filtrar por anulacion</mat-label>
+  <mat-select formControlName="" placeholder="">
+    <mat-option value="SI">SI</mat-option>
+    <mat-option value="NO">NO</mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+<div mat-fecha-content>
+  <mat-form-field class="example-form-field" appearance="fill">
+   <mat-label>First campaign</mat-label>
+   <mat-date-range-input
+     [formGroup]="campaignOne"
+     [rangePicker]="campaignOnePicker"
+     [comparisonStart]="campaignTwo.value.start"
+     [comparisonEnd]="campaignTwo.value.end">
+     <input matStartDate placeholder="Start date" formControlName="start">
+     <input matEndDate placeholder="End date" formControlName="end">
+   </mat-date-range-input>
+   <mat-datepicker-toggle matSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
+   <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
+ </mat-form-field>
+ 
+ <mat-form-field class="example-form-field" appearance="fill">
+   <mat-label>Second campaign</mat-label>
+   <mat-date-range-input
+     [formGroup]="campaignTwo"
+     [rangePicker]="campaignTwoPicker"
+     [comparisonStart]="campaignOne.value.start"
+     [comparisonEnd]="campaignOne.value.end">
+     <input matStartDate placeholder="Start date" formControlName="start">
+     <input matEndDate placeholder="End date" formControlName="end">
+   </mat-date-range-input>
+   <mat-datepicker-toggle matSuffix [for]="campaignTwoPicker"></mat-datepicker-toggle>
+   <mat-date-range-picker #campaignTwoPicker></mat-date-range-picker>
+ </mat-form-field> 
+ </div>
+
+
+<button mat-raised-button color="primary"><mat-icon>assignment_returned</mat-icon> Descargar para Excel</button> 
+
+</div>
+
+
+ 
+<mat-form-field appearance="standard">
+      <mat-label>FILTRAR</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="FILTRAR" #input>
+    </mat-form-field>
+
+<div class="container">
+  <div style="margin-top: 50px;">
+    <mat-form-field appearance="standard">
+      <mat-label>FILTRAR</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="FILTRAR" #input>
+    </mat-form-field>
+    
+    <div class="mat-elevation-z8" >
+      <table mat-table [dataSource]="dataSource" matSort>
+    
+        <!-- ID Column -->
+        <ng-container matColumnDef="productName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>NOMBRE</th>
+          <td mat-cell *matCellDef="let row"> {{row.productName}} </td>
+        </ng-container>
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="serie">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>SERIE</th>
+          <td mat-cell *matCellDef="let row"> {{row.serie}} </td>
+        </ng-container>
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="numero">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> NUMERO </th>
+          <td mat-cell *matCellDef="let row"> {{row.numero}} </td>
+        </ng-container>
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="ruc">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> RUC </th>
+          <td mat-cell *matCellDef="let row"> {{row.ruc}} </td>
+        </ng-container>
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="mtc">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> MTC </th>
+          <td mat-cell *matCellDef="let row"> S/.{{row.mtc}} </td>
+        </ng-container>
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="totalOnerosa">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> TOTAL-ONEROSA </th>
+          <td mat-cell *matCellDef="let row"> {{row.totalOnerosa}} </td>
+        </ng-container>
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="totalGratuita">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> TOTAL-GRATUITA </th>
+          <td mat-cell *matCellDef="let row"> {{row.totalGratuita}} </td>
+        </ng-container>
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="enviadoCliente">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ENVIADO-CLIENTE </th>
+          <td mat-cell *matCellDef="let row"> {{row.enviadoCliente}} </td>
+        </ng-container>
+
+        <!-- Progress Column -->
+        <ng-container matColumnDef="category">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> TIPO </th>
+          <td mat-cell *matCellDef="let row"> {{row.category}} </td>
+        </ng-container>
+    
+        <!-- Name Column -->
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> FECHA </th>
+          <td mat-cell *matCellDef="let row"> {{row.date | date}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ACTION </th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-icon-button (click)="editProduct(row)" color="primary">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button (click)="deleteProduct(row.id)" mat-icon-button color="warn">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+        
+        
+        <ng-container matColumnDef="imprimir">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> IMPRIMIR </th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-raised-button color="primary">Imprimir</button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="pdf">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> PDF </th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-raised-button color="primary">PDF</button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="xml">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> XML </th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-raised-button color="primary">XML</button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="cdr">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> CDR </th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-raised-button color="primary">CDR</button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="estado">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ESTADO </th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-raised-button color="primary">✓</button>
+          </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+      </table>
+    
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+
+    </div>
+    </div>
+  </div>
